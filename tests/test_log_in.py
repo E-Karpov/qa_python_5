@@ -11,15 +11,17 @@ class TestLogin:
         driver.get(LINKS.HOME)
 
         # Ожидание и клик по кнопке "Войти в аккаунт"
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(HomePageLocators.header_login_btn)).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(HomePageLocators.HEADER_LOGIN_BTN)).click()
 
         # Ввод данных для входа
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_email_input)).send_keys(User.email)
-        driver.find_element(*LoginPageLocators.login_password_input).send_keys(User.password)
-        driver.find_element(*LoginPageLocators.login_submit_btn).click()
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.LOGIN_EMAIL_INPUT)).send_keys(User.EMAIL)
+        driver.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(User.PASSWORD)
+        driver.find_element(*LoginPageLocators.LOGIN_SUBMIT_BTN).click()
 
         # Проверка успешного входа через наличие кнопки "Оформить заказ"
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.order_button))
+        assert WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located(HomePageLocators.ORDER_BUTTON)
+        ), "Кнопка 'Оформить заказ' не отображается"
         assert driver.current_url == LINKS.HOME, "Вход не выполнен"
 
     # Вход через кнопку «Личный кабинет»
@@ -27,15 +29,17 @@ class TestLogin:
         driver.get(LINKS.HOME)
 
         # Ожидание и клик по кнопке "Личный кабинет"
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(HomePageLocators.header_personal_account_btn)).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(HomePageLocators.HEADER_PERSONAL_ACCOUNT_BTN)).click()
 
         # Ввод данных для входа
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_email_input)).send_keys(User.email)
-        driver.find_element(*LoginPageLocators.login_password_input).send_keys(User.password)
-        driver.find_element(*LoginPageLocators.login_submit_btn).click()
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.LOGIN_EMAIL_INPUT)).send_keys(User.EMAIL)
+        driver.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(User.PASSWORD)
+        driver.find_element(*LoginPageLocators.LOGIN_SUBMIT_BTN).click()
 
         # Проверка успешного входа через наличие кнопки "Оформить заказ"
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.order_button))
+        assert WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located(HomePageLocators.ORDER_BUTTON)
+        ), "Кнопка 'Оформить заказ' не отображается"
         assert driver.current_url == LINKS.HOME, "Вход через личный кабинет не выполнен"
 
     # Вход через кнопку в форме регистрации
@@ -43,15 +47,17 @@ class TestLogin:
         driver.get(LINKS.REGISTER)
 
         # Ожидание и клик по кнопке "Войти" на странице регистрации
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(RegistrationPageLocators.login_link)).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(RegistrationPageLocators.LOGIN_LINK)).click()
 
         # Ввод данных для входа
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_email_input)).send_keys(User.email)
-        driver.find_element(*LoginPageLocators.login_password_input).send_keys(User.password)
-        driver.find_element(*LoginPageLocators.login_submit_btn).click()
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.LOGIN_EMAIL_INPUT)).send_keys(User.EMAIL)
+        driver.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(User.PASSWORD)
+        driver.find_element(*LoginPageLocators.LOGIN_SUBMIT_BTN).click()
 
         # Проверка успешного входа через наличие кнопки "Оформить заказ"
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.order_button))
+        assert WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located(HomePageLocators.ORDER_BUTTON)
+        ), "Кнопка 'Оформить заказ' не отображается"
         assert driver.current_url == LINKS.HOME, "Вход через форму регистрации не выполнен"
 
     # Вход через кнопку в форме восстановления пароля
@@ -59,13 +65,15 @@ class TestLogin:
         driver.get(LINKS.FORGOT_PASSWORD)
 
         # Ожидание и клик по кнопке "Войти" на странице восстановления пароля
-        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(ForgotPasswordPageLocators.login_link)).click()
+        WebDriverWait(driver, 10).until(EC.element_to_be_clickable(ForgotPasswordPageLocators.LOGIN_LINK)).click()
 
         # Ввод данных для входа
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.login_email_input)).send_keys(User.email)
-        driver.find_element(*LoginPageLocators.login_password_input).send_keys(User.password)
-        driver.find_element(*LoginPageLocators.login_submit_btn).click()
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located(LoginPageLocators.LOGIN_EMAIL_INPUT)).send_keys(User.EMAIL)
+        driver.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(User.PASSWORD)
+        driver.find_element(*LoginPageLocators.LOGIN_SUBMIT_BTN).click()
 
         # Проверка успешного входа через наличие кнопки "Оформить заказ"
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.order_button))
+        assert WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located(HomePageLocators.ORDER_BUTTON)
+        ), "Кнопка 'Оформить заказ' не отображается"
         assert driver.current_url == LINKS.HOME, "Вход через форму восстановления пароля не выполнен"

@@ -20,11 +20,11 @@ def driver():
 @pytest.fixture
 def get_login_driver(driver):
     driver.get(LINKS.HOME)
-    driver.find_element(*HomePageLocators.header_personal_account_btn).click()
-    driver.find_element(*LoginPageLocators.login_email_input).send_keys(User.email)
-    driver.find_element(*LoginPageLocators.login_password_input).send_keys(User.password)
-    driver.find_element(*LoginPageLocators.login_submit_btn).click()
-    WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.order_button))
+    driver.find_element(*HomePageLocators.HEADER_PERSONAL_ACCOUNT_BTN).click()
+    driver.find_element(*LoginPageLocators.LOGIN_EMAIL_INPUT).send_keys(User.EMAIL)
+    driver.find_element(*LoginPageLocators.LOGIN_PASSWORD_INPUT).send_keys(User.PASSWORD)
+    driver.find_element(*LoginPageLocators.LOGIN_SUBMIT_BTN).click()
+    WebDriverWait(driver, 10).until(EC.presence_of_element_located(HomePageLocators.ORDER_BUTTON))
 
     return driver
 

@@ -12,31 +12,31 @@ class TestConstructorPage:
         driver.get(LINKS.HOME)
 
         # Переходим к разделу "Соусы", чтобы затем вернуться к "Булкам"
-        driver.find_element(*HomePageLocators.ingredient_category_sauce).click()
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.ingredient_section_sauces))
+        driver.find_element(*HomePageLocators.INGREDIENT_CATEGORY_SAUCE).click()
+        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.INGREDIENT_SECTION_SAUCES))
 
         # Переходим к разделу "Булки"
-        driver.find_element(*HomePageLocators.ingredient_category_bun).click()
+        driver.find_element(*HomePageLocators.INGREDIENT_CATEGORY_BUN).click()
 
         # Ожидаем, что раздел "Булки" отображается
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.ingredient_section_buns)), "Раздел 'Булки' не отображается"
+        assert WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.INGREDIENT_SECTION_BUNS)), "Раздел 'Булки' не отображается"
 
     # Переход к разделу «Соусы»
     def test_constructor_sauces_section(self, driver):
         driver.get(LINKS.HOME)
 
         # Переходим к разделу "Соусы"
-        driver.find_element(*HomePageLocators.ingredient_category_sauce).click()
+        driver.find_element(*HomePageLocators.INGREDIENT_CATEGORY_SAUCE).click()
 
         # Ожидаем, что раздел "Соусы" отображается
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.ingredient_section_sauces)), "Раздел 'Соусы' не отображается"
+        assert WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.INGREDIENT_SECTION_SAUCES)), "Раздел 'Соусы' не отображается"
 
     # Переход к разделу «Начинки»
     def test_constructor_toppings_section(self, driver):
         driver.get(LINKS.HOME)
 
         # Переходим к разделу "Начинки"
-        driver.find_element(*HomePageLocators.ingredient_category_topping).click()
+        driver.find_element(*HomePageLocators.INGREDIENT_CATEGORY_TOPPING).click()
 
         # Ожидаем, что раздел "Начинки" отображается
-        WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.ingredient_section_toppings)), "Раздел 'Начинки' не отображается"
+        assert WebDriverWait(driver, 10).until(EC.visibility_of_element_located(HomePageLocators.INGREDIENT_SECTION_TOPPINGS)), "Раздел 'Начинки' не отображается"
